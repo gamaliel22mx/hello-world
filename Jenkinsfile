@@ -31,7 +31,6 @@ node ('master'){
                 },
                 commpile:{
                     withEnv(["PATH+MAVEN=${tool 'maven_3'}/bin"]) {
-                        //sh 'mvn package -DskipTests'
                         rtMaven.run pom: 'pom.xml', goals: 'package -DskipTests', buildInfo: buildInfo
                     }
                 }
@@ -40,7 +39,8 @@ node ('master'){
     }
     stage('Publish Artifact') {
         dir('gitRepo'){
-            server.publishBuildInfo buildInfo
+            //server.publishBuildInfo buildInfo
+            sleep 5
         }
     }
     stage('Functional Test') {
