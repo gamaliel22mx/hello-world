@@ -31,7 +31,8 @@ node ('master'){
                 },
                 commpile:{
                     withEnv(["PATH+MAVEN=${tool 'maven_3'}/bin"]) {
-                        rtMaven.run pom: 'pom.xml', goals: 'package -DskipTests', buildInfo: buildInfo
+                        sh 'mvn build'
+                        //rtMaven.run pom: 'pom.xml', goals: 'package -DskipTests', buildInfo: buildInfo
                     }
                 }
             )
